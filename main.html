@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <title>Генератор паролей — Терминал</title>
+  <style>
+    :root {
+      --bg-color: #000;
+      --text-color: #00ffcc;
+      --border-color: #00ffcc;
+      --btn-bg: #000;
+      --highlight-color: #0ff;
+    }
+    body.light {
+      --bg-color: #f9f9f9;
+      --text-color: #222;
+      --border-color: #444;
+      --btn-bg: #fff;
+      --highlight-color: #0055ff;
+    }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: monospace;
+      padding: 20px;
+      margin: 0;
+      transition: all 0.3s ease;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      height: 300px;
+      overflow-y: auto;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.1);
+      animation: fadeIn 0.4s ease-in;
+      box-sizing: border-box;
+    }
+    input[type="number"], button {
+      background: var(--btn-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
+      outline: none;
+      font-family: monospace;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 5px 0;
+      transition: background 0.3s ease, color 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      cursor: pointer;
+    }
+    #controls {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--btn-bg);
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      transition: background 0.3s;
+      flex: 1 1 calc(50% - 10px);
+      box-sizing: border-box;
+    }
+    .checkbox-wrapper input[type="checkbox"] {
+      accent-color: var(--highlight-color);
+      width: 16px;
+      height: 16px;
+    }
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .button-row button {
+      flex: 1 1 calc(50% - 10px);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 500px) {
+      .checkbox-wrapper {
+        flex: 1 1 100%;
+      }
+      .button-row button {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <div id="controls">
+    <input type="number" id="length" placeholder="Длина пароля (от 4 до 128)" min="4" max="128">
+    <div class="options">
+      <label class="checkbox-wrapper"><input type="checkbox" id="include-uppercase" checked> Заглавные</label>
+      <label class="checkbox-wrapper"><input type="checkbox" id="include-lowercase" checked> Строчные</label>
+      <label class="checkbox-wrapper"><input type="checkbox" id="include-numbers" checked> Цифры</label>
+      <label class="checkbox-wrapper"><input type="checkbox" id="include-symbols" checked> Спецсимволы</label>
+    </div>
+    <div class="button-row">
+      <button onclick="generatePassword()">🔐 Сгенерировать пароль</button>
+      <button onclick="copyLastPassword()">📋 Копировать пароль</button>
+      <button onclick="randomLength()">🎲 Случайная длина</button>
+      <button onclick="clearTerminal()">🧹 Очистить</button>
+      <button onclick="toggleTheme()">🌗 Переключить тему</button>
+    </div>
+  </div>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+    let lastPassword = "";
+
+    const print = (text) => {
+      const lines = text.split("\n");
+      lines.forEach(line => {
+        const lineElement = document.createElement("div");
+        lineElement.textContent = line;
+        terminal.appendChild(lineElement);
+      });
+      terminal.scrollTop = terminal.scrollHeight;
+    };
+
+    const clearTerminal = () => {
+      terminal.innerHTML = "";
+    };
+
+    const copyToClipboard = (text) => {
+      navigator.clipboard.writeText(text).then(() => {
+        print("> 📋 Пароль скопирован в буфер обмена.");
+      });
+    };
+
+    const copyLastPassword = () => {
+      if (lastPassword) {
+        copyToClipboard(lastPassword);
+      } else {
+        print("> ❗ Пароль ещё не сгенерирован.");
+      }
+    };
+
+    const randomLength = () => {
+      const random = Math.floor(Math.random() * (24 - 8 + 1)) + 8;
+      document.getElementById("length").value = random;
+      print("> 🎲 Случайная длина выбрана: " + random);
+    };
+
+    const generatePassword = () => {
+      const length = parseInt(document.getElementById("length").value);
+      const useUpper = document.getElementById("include-uppercase").checked;
+      const useLower = document.getElementById("include-lowercase").checked;
+      const useNumbers = document.getElementById("include-numbers").checked;
+      const useSymbols = document.getElementById("include-symbols").checked;
+
+      if (isNaN(length) || length < 4 || length > 128) {
+        print("> ❌ Неверная длина. Введите число от 4 до 128.");
+        return;
+      }
+
+      let charset = "";
+      if (useUpper) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      if (useLower) charset += "abcdefghijklmnopqrstuvwxyz";
+      if (useNumbers) charset += "0123456789";
+      if (useSymbols) charset += "!@#$%^&*()-_+=<>?";
+
+      if (!charset) {
+        print("> ❌ Выберите хотя бы один тип символов.");
+        return;
+      }
+
+      let password = "";
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+      }
+
+      lastPassword = password;
+      print("> Сгенерированный пароль:");
+      print(password);
+    };
+
+    const toggleTheme = () => {
+      document.body.classList.toggle("light");
+    };
+
+    // Offline support
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').then(() => {
+          console.log("✅ Service Worker зарегистрирован");
+        }).catch(err => {
+          console.warn("Service Worker не зарегистрирован:", err);
+        });
+      });
+    }
+
+    print("Добро пожаловать в терминальный Генератор Паролей!");
+    print("Введите длину, выберите параметры и нажмите кнопку.");
+  </script>
+</body>
+</html>
