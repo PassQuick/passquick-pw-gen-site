@@ -1,6 +1,6 @@
 {
-  "name": "Терминал: Генератор Паролей",
-  "short_name": "PasswordGen",
+  "name": "Генератор паролей PassQuick",
+  "short_name": "PassQuick",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",

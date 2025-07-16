@@ -1,7 +1,7 @@
 const cacheName = 'terminal-pwgen-v1';
 const filesToCache = [
   '/',
-  '/main.html',
+  '/index.html',
   '/manifest.json',
 ];
 
