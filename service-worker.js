@@ -2,7 +2,6 @@ const cacheName = 'terminal-pwgen-v1';
 const filesToCache = [
   '/',
   '/index.html',
-  '/manifest.json',
 ];
 
 self.addEventListener('install', (e) => {
@@ -12,6 +11,10 @@ self.addEventListener('install', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  if (e.request.url.endsWith('manifest.json')) {
+    return;
+  }
+
   e.respondWith(
     caches.match(e.request).then((response) => response || fetch(e.request))
   );
