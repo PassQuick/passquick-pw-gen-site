@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PassQuick - Secure Password Generator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background particles */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #e8750c;
+      border-radius: 50%;
+      animation: float 8s infinite ease-in-out;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+    }
+
+    .container {
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      border: 1px solid #e8750c;
+      box-shadow: 0 20px 40px rgba(232, 117, 12, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 2;
+      position: relative;
+      animation: slideIn 1s ease-out;
+      margin: 20px;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #e8750c;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(232, 117, 12, 0.5);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #999;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .language-selector {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .language-card {
+      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+      border: 2px solid #333;
+      border-radius: 15px;
+      padding: 30px 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      min-width: 200px;
+      flex: 1;
+      max-width: 250px;
+      touch-action: manipulation;
+    }
+
+    .language-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(232, 117, 12, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .language-card:hover::before,
+    .language-card:active::before {
+      left: 100%;
+    }
+
+    .language-card:hover,
+    .language-card:active {
+      transform: translateY(-5px) scale(1.02);
+      border-color: #e8750c;
+      box-shadow: 0 15px 30px rgba(232, 117, 12, 0.3);
+    }
+
+    .language-flag {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      display: block;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    .language-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #e8750c;
+    }
+
+    .language-desc {
+      font-size: 0.9rem;
+      color: #bbb;
+      opacity: 0.8;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .feature {
+      background: rgba(232, 117, 12, 0.1);
+      border: 1px solid rgba(232, 117, 12, 0.3);
+      border-radius: 10px;
+      padding: 20px 15px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      background: rgba(232, 117, 12, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .feature-text {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #666;
+      font-size: 0.8rem;
+      z-index: 2;
+      white-space: nowrap;
+    }
+
+    .language-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.9);
+      border: 2px solid #e8750c;
+      border-radius: 25px;
+      padding: 12px 18px;
+      cursor: pointer;
+      color: #e8750c;
+      font-size: 1rem;
+      font-weight: bold;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      z-index: 10;
+      user-select: none;
+      touch-action: manipulation;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .language-toggle:hover,
+    .language-toggle:active {
+      background: rgba(232, 117, 12, 0.2);
+      transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(232, 117, 12, 0.4);
+    }
+
+    /* Mobile-first responsive design */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 30px 20px;
+        margin: 10px;
+        width: calc(100% - 20px);
+        max-width: none;
+      }
+
+      .logo {
+        font-size: 2.8rem;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+      }
+
+      .description {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+      }
+
+      .language-selector {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .language-card {
+        min-width: auto;
+        width: 100%;
+        max-width: 280px;
+        padding: 25px 20px;
+      }
+
+      .language-flag {
+        font-size: 2.5rem;
+      }
+
+      .language-name {
+        font-size: 1.3rem;
+      }
+
+      .language-desc {
+        font-size: 0.85rem;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .feature {
+        padding: 15px 10px;
+      }
+
+      .feature-icon {
+        font-size: 1.5rem;
+      }
+
+      .feature-text {
+        font-size: 0.8rem;
+      }
+
+      .footer {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 30px;
+        font-size: 0.75rem;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .language-toggle {
+        top: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 25px 15px;
+      }
+
+      .logo {
+        font-size: 2.5rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .description {
+        font-size: 0.9rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .language-card {
+        padding: 20px 15px;
+      }
+
+      .language-flag {
+        font-size: 2rem;
+      }
+
+      .language-name {
+        font-size: 1.2rem;
+      }
+
+      .language-desc {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Улучшенная поддержка touch-устройств */
+    @media (hover: none) and (pointer: coarse) {
+      .language-card:hover {
+        transform: none;
+      }
+      
+      .language-card:active {
+        transform: translateY(-2px) scale(0.98);
+      }
+      
+      .feature:hover {
+        transform: none;
+      }
+      
+      .language-toggle:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles"></div>
+  
+  <div class="language-toggle" id="languageToggle">
+    <span id="langToggleText">RU</span>
+  </div>
+  
+  <div class="container">
+    <div class="logo">🔐 PassQuick</div>
+    <div class="subtitle" id="subtitle">Secure password generator</div>
+    <div class="description" id="description">
+      Generate strong, cryptographically secure passwords instantly. 
+      Choose your preferred language and start creating unbreakable passwords.
+    </div>
+    
+    <div class="language-selector">
+      <div class="language-card" id="russianCard">
+        <span class="language-flag">🇷🇺</span>
+        <div class="language-name" id="russianName">Открыть</div>
+        <div class="language-desc" id="russianDesc">Генератор паролей на русском языке</div>
+      </div>
+      
+      <div class="language-card" id="englishCard">
+        <span class="language-flag">🇺🇸</span>
+        <div class="language-name" id="englishName">Open</div>
+        <div class="language-desc" id="englishDesc">Password generator in English</div>
+      </div>
+    </div>
+    
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">🛡️</span>
+        <div class="feature-text" id="feature1">Cryptographically secure</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">✨</span>
+        <div class="feature-text" id="feature2">Customizable generation</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">⚡</span>
+        <div class="feature-text" id="feature3">Instant generation</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🌐</span>
+        <div class="feature-text" id="feature4">Works offline</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎯</span>
+        <div class="feature-text" id="feature5">Minimalistic interface</div>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🔓</span>
+        <div class="feature-text" id="feature6">Open-source code</div>
+      </div>
+    </div>
+    
+    <div class="footer" id="footer">
+      &copy; 2025 Meme Corp. PassQuick — your security, our priority.
+    </div>
+  </div>
+
+  <script>
+    // Language data
+    const languages = {
+      en: {
+        subtitle: "Secure password generator",
+        description: "Generate strong, cryptographically secure passwords instantly. Choose your preferred language and start creating unbreakable passwords.",
+        russianName: "Открыть",
+        russianDesc: "Генератор паролей на русском языке",
+        englishName: "Open",
+        englishDesc: "Password generator in English",
+        feature1: "Cryptographically secure",
+        feature2: "Customizable generation",
+        feature3: "Instant generation",
+        feature4: "Works offline",
+        feature5: "Minimalistic interface",
+        feature6: "Open-source code",
+        footer: "&copy; 2025 Meme Corp. PassQuick — your security, our priority.",
+        toggleText: "RU"
+      },
+      ru: {
+        subtitle: "Безопасный генератор паролей",
+        description: "Создавайте надежные, криптографически безопасные пароли мгновенно. Выберите предпочитаемый язык и начните создавать неуязвимые пароли.",
+        russianName: "Открыть",
+        russianDesc: "Генератор паролей на русском языке",
+        englishName: "Open",
+        englishDesc: "Password generator in English",
+        feature1: "Криптографически безопасный",
+        feature2: "Настраиваемая генерация",
+        feature3: "Мгновенная генерация",
+        feature4: "Работает офлайн",
+        feature5: "Минималистичный интерфейс",
+        feature6: "Открытый исходный код",
+        footer: "&copy; 2025 Meme Corp. PassQuick — Ваша безопасность, наш приоритет.",
+        toggleText: "EN"
+      }
+    };
+
+    let currentLang = 'en';
+
+    // Toggle language function
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ru' : 'en';
+      const lang = languages[currentLang];
+      
+      // Update text content with smooth transition
+      const elements = [
+        'subtitle', 'description', 'russianName', 'russianDesc', 
+        'englishName', 'englishDesc', 'feature1', 'feature2', 
+        'feature3', 'feature4', 'feature5', 'feature6', 'footer'
+      ];
+      
+      elements.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.style.opacity = '0.5';
+          setTimeout(() => {
+            if (id === 'footer') {
+              element.innerHTML = lang[id];
+            } else {
+              element.textContent = lang[id];
+            }
+            element.style.opacity = '1';
+          }, 150);
+        }
+      });
+      
+      // Update toggle button
+      const toggleText = document.getElementById('langToggleText');
+      if (toggleText) {
+        toggleText.textContent = lang.toggleText;
+      }
+      
+      // Update page title and lang attribute
+      document.title = currentLang === 'en' ? 'PassQuick - Secure password generator' : 'PassQuick - Безопасный генератор паролей';
+      document.documentElement.lang = currentLang;
+    }
+
+    // Create floating particles
+    function createParticles() {
+      const particles = document.querySelector('.particles');
+      if (!particles) return;
+      
+      // Меньше частиц на мобильных устройствах
+      const particleCount = window.innerWidth < 768 ? 30 : 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        particles.appendChild(particle);
+      }
+    }
+
+    // Navigation functions
+    function goToRussian() {
+      // Add loading animation
+      document.body.style.opacity = '0.8';
+      setTimeout(() => {
+        // Replace with your Russian version URL
+        window.location.href = 'index.html';
+      }, 300);
+    }
+
+    function goToEnglish() {
+      // Add loading animation
+      document.body.style.opacity = '0.8';
+      setTimeout(() => {
+        // Replace with your English version URL
+        window.location.href = 'index_en.html';
+      }, 300);
+    }
+
+    // Add subtle mouse movement effect (только для desktop)
+    function addMouseEffect() {
+      if (window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+          const container = document.querySelector('.container');
+          if (!container) return;
+          
+          const rect = container.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          const deltaX = (e.clientX - centerX) * 0.01;
+          const deltaY = (e.clientY - centerY) * 0.01;
+          
+          container.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+        });
+      }
+    }
+
+    // Event listeners
+    function setupEventListeners() {
+      // Language toggle
+      const languageToggle = document.getElementById('languageToggle');
+      if (languageToggle) {
+        languageToggle.addEventListener('click', toggleLanguage);
+        languageToggle.addEventListener('touchstart', toggleLanguage);
+      }
+
+      // Language cards
+      const russianCard = document.getElementById('russianCard');
+      const englishCard = document.getElementById('englishCard');
+      
+      if (russianCard) {
+        russianCard.addEventListener('click', goToRussian);
+        russianCard.addEventListener('touchstart', goToRussian);
+      }
+      
+      if (englishCard) {
+        englishCard.addEventListener('click', goToEnglish);
+        englishCard.addEventListener('touchstart', goToEnglish);
+      }
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '1' || e.key === 'r' || e.key === 'R') {
+          goToRussian();
+        } else if (e.key === '2' || e.key === 'e' || e.key === 'E') {
+          goToEnglish();
+        } else if (e.key === 'l' || e.key === 'L') {
+          toggleLanguage();
+        }
+      });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      setupEventListeners();
+      addMouseEffect();
+      
+      // Add smooth transitions to text elements
+      const textElements = document.querySelectorAll('#subtitle, #description, #russianName, #russianDesc, #englishName, #englishDesc, .feature-text, #footer');
+      textElements.forEach(el => {
+        el.style.transition = 'opacity 0.3s ease';
+      });
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      // Recreate particles on resize
+      const particles = document.querySelector('.particles');
+      if (particles) {
+        particles.innerHTML = '';
+        createParticles();
+      }
+    });
+  </script>
+</body>
+</html>
