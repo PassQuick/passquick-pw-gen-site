@@ -40,6 +40,7 @@
       border-radius: 50%;
       animation: float 8s infinite ease-in-out;
       opacity: 0.6;
+      will-change: transform, opacity;
     }
 
     @keyframes float {
@@ -119,6 +120,7 @@
       flex: 1;
       max-width: 250px;
       touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .language-card::before {
@@ -132,13 +134,11 @@
       transition: left 0.5s ease;
     }
 
-    .language-card:hover::before,
-    .language-card:active::before {
+    .language-card:hover::before {
       left: 100%;
     }
 
-    .language-card:hover,
-    .language-card:active {
+    .language-card:hover {
       transform: translateY(-5px) scale(1.02);
       border-color: #e8750c;
       box-shadow: 0 15px 30px rgba(232, 117, 12, 0.3);
@@ -232,10 +232,10 @@
       touch-action: manipulation;
       min-width: 50px;
       text-align: center;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .language-toggle:hover,
-    .language-toggle:active {
+    .language-toggle:hover {
       background: rgba(232, 117, 12, 0.2);
       transform: scale(1.1);
       box-shadow: 0 5px 15px rgba(232, 117, 12, 0.4);
@@ -327,6 +327,31 @@
         padding: 10px 15px;
         font-size: 0.9rem;
       }
+
+      /* Оптимизация анимаций для мобильных устройств */
+      .particle {
+        animation-duration: 12s;
+      }
+
+      .logo {
+        animation-duration: 3s;
+      }
+
+      .language-flag {
+        animation-duration: 4s;
+      }
+
+      /* Отключение некоторых анимаций на слабых устройствах */
+      @media (max-width: 480px) {
+        .particle {
+          animation: none;
+          opacity: 0.3;
+        }
+        
+        .language-flag {
+          animation: none;
+        }
+      }
     }
 
     @media (max-width: 480px) {
@@ -372,18 +397,44 @@
     @media (hover: none) and (pointer: coarse) {
       .language-card:hover {
         transform: none;
+        border-color: #333;
+        box-shadow: none;
       }
       
       .language-card:active {
         transform: translateY(-2px) scale(0.98);
+        border-color: #e8750c;
+        box-shadow: 0 5px 15px rgba(232, 117, 12, 0.3);
       }
       
       .feature:hover {
         transform: none;
+        background: rgba(232, 117, 12, 0.1);
       }
       
       .language-toggle:hover {
         transform: none;
+        background: rgba(0, 0, 0, 0.9);
+        box-shadow: none;
+      }
+
+      .language-toggle:active {
+        transform: scale(0.95);
+        background: rgba(232, 117, 12, 0.2);
+      }
+    }
+
+    /* Дополнительные оптимизации для производительности */
+    .language-card,
+    .feature,
+    .language-toggle {
+      will-change: transform;
+    }
+
+    /* Уменьшение количества частиц на мобильных */
+    @media (max-width: 768px) {
+      .particles {
+        opacity: 0.7;
       }
     }
   </style>
@@ -487,9 +538,13 @@
     };
 
     let currentLang = 'en';
+    let isToggling = false;
 
     // Toggle language function
     function toggleLanguage() {
+      if (isToggling) return;
+      isToggling = true;
+      
       currentLang = currentLang === 'en' ? 'ru' : 'en';
       const lang = languages[currentLang];
       
@@ -524,6 +579,10 @@
       // Update page title and lang attribute
       document.title = currentLang === 'en' ? 'PassQuick — Secure password generator' : 'PassQuick — Безопасный генератор паролей';
       document.documentElement.lang = currentLang;
+
+      setTimeout(() => {
+        isToggling = false;
+      }, 300);
     }
 
     // Create floating particles
@@ -531,8 +590,14 @@
       const particles = document.querySelector('.particles');
       if (!particles) return;
       
-      // Меньше частиц на мобильных устройствах
-      const particleCount = window.innerWidth < 768 ? 30 : 50;
+      // Меньше частиц на мобильных устройствах и еще меньше на слабых
+      let particleCount = 50;
+      if (window.innerWidth < 768) {
+        particleCount = 25;
+      }
+      if (window.innerWidth < 480) {
+        particleCount = 15;
+      }
       
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -540,7 +605,7 @@
         particle.style.left = Math.random() * 100 + '%';
         particle.style.top = Math.random() * 100 + '%';
         particle.style.animationDelay = Math.random() * 8 + 's';
-        particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 8) + 's';
         particles.appendChild(particle);
       }
     }
@@ -582,27 +647,42 @@
       }
     }
 
+    // Improved event handling for mobile
+    function handleTouchEvent(element, callback) {
+      let touchHandled = false;
+      
+      element.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        touchHandled = true;
+        callback();
+      }, { passive: false });
+      
+      element.addEventListener('click', (e) => {
+        if (!touchHandled) {
+          callback();
+        }
+        touchHandled = false;
+      });
+    }
+
     // Event listeners
     function setupEventListeners() {
-      // Language toggle
+      // Language toggle with improved mobile handling
       const languageToggle = document.getElementById('languageToggle');
       if (languageToggle) {
-        languageToggle.addEventListener('click', toggleLanguage);
-        languageToggle.addEventListener('touchstart', toggleLanguage);
+        handleTouchEvent(languageToggle, toggleLanguage);
       }
 
-      // Language cards
+      // Language cards with improved mobile handling
       const russianCard = document.getElementById('russianCard');
       const englishCard = document.getElementById('englishCard');
       
       if (russianCard) {
-        russianCard.addEventListener('click', goToRussian);
-        russianCard.addEventListener('touchstart', goToRussian);
+        handleTouchEvent(russianCard, goToRussian);
       }
       
       if (englishCard) {
-        englishCard.addEventListener('click', goToEnglish);
-        englishCard.addEventListener('touchstart', goToEnglish);
+        handleTouchEvent(englishCard, goToEnglish);
       }
 
       // Keyboard navigation
@@ -631,13 +711,17 @@
     });
 
     // Handle window resize
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-      // Recreate particles on resize
-      const particles = document.querySelector('.particles');
-      if (particles) {
-        particles.innerHTML = '';
-        createParticles();
-      }
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        // Recreate particles on resize
+        const particles = document.querySelector('.particles');
+        if (particles) {
+          particles.innerHTML = '';
+          createParticles();
+        }
+      }, 250);
     });
   </script>
 </body>
