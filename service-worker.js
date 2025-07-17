@@ -1,7 +1,6 @@
 const cacheName = 'terminal-pwgen-v1';
 const filesToCache = [
   '/',
-  '/index.html',
   '/pw_generator_ru.html',
   '/pw_generator_en.html',
 ];
