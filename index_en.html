@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="manifest" href="manifest.json?v=2">
   <meta name="theme-color" content="#000000">
   <link rel="icon" href="passquick-icon_192-v2.png" type="image/png">
-  <title>Генератор паролей PassQuick</title>
+  <title>PassQuick password generator</title>
   <style>
     :root {
       --bg-color: #000;
@@ -211,40 +211,40 @@
 </head>
 <body>
   <div id="header">
-    <h1>🔐 Генератор паролей PassQuick</h1>
-    <a href="index_en.html" id="langToggle">🌐 Английский</a>
+    <h1>🔐 PassQuick password generator</h1>
+    <a href="index.html" id="langToggle">🌐 Russian</a>
   </div>
 
   <div id="terminal"></div>
   <div id="controls">
-    <input type="number" id="length" placeholder="Длина пароля (от 4 до 128)" min="4" max="128">
+    <input type="number" id="length" placeholder="Password length (4 to 128)" min="4" max="128">
     <div class="options">
-      <label class="checkbox-wrapper"><input type="checkbox" id="include-uppercase" checked> Заглавные</label>
-      <label class="checkbox-wrapper"><input type="checkbox" id="include-lowercase" checked> Строчные</label>
-      <label class="checkbox-wrapper"><input type="checkbox" id="include-numbers" checked> Цифры</label>
-      <label class="checkbox-wrapper"><input type="checkbox" id="include-symbols" checked> Спецсимволы</label>
+      <label class="checkbox-wrapper"><input type="checkbox" id="include-uppercase" checked> Uppercase</label>
+      <label class="checkbox-wrapper"><input type="checkbox" id="include-lowercase" checked> Lowercase</label>
+      <label class="checkbox-wrapper"><input type="checkbox" id="include-numbers" checked> Numbers</label>
+      <label class="checkbox-wrapper"><input type="checkbox" id="include-symbols" checked> Symbols</label>
     </div>
     <div class="button-row">
-      <button onclick="generatePassword()">🔐 Сгенерировать пароль</button>
-      <button onclick="copyLastPassword()">📋 Копировать пароль</button>
-      <button onclick="randomLength()">🎲 Случайная длина</button>
-      <button onclick="clearTerminal()">🧹 Очистить окно</button>
-      <button onclick="toggleTheme()">🌗 Переключить тему</button>
+      <button onclick="generatePassword()">🔐 Generate password</button>
+      <button onclick="copyLastPassword()">📋 Copy password</button>
+      <button onclick="randomLength()">🎲 Random length</button>
+      <button onclick="clearTerminal()">🧹 Clear terminal</button>
+      <button onclick="toggleTheme()">🌗 Toggle theme</button>
     </div>
   </div>
 
   <footer>
     <div>&copy; 2025 Meme Corp.</div>
-    <button id="helpBtn">Помощь</button>
+    <button id="helpBtn">Help</button>
   </footer>
 
   <div id="helpModal" role="dialog" aria-modal="true">
     <div class="modal-content">
       <span class="close" onclick="document.getElementById('helpModal').style.display='none'">&times;</span>
-      <h2>Как пользоваться?</h2>
-      <p>Это максимально простой и минималистичный генератор паролей, написанный на HTML, CSS и JavaScript, работающий локально. Введите и выберите нужные параметры, нажмите «Сгенерировать» — и получите безопасный пароль.</p>
-      <p>Генератор паролей PassQuick является проектом с открытым исходным кодом. Вы можете посмотреть его полный код на <a href="https://github.com/" target="_blank" style="color:#e8750c;">GitHub</a>.</p>
-      <p>Мы не используем cookie-файлы (куки-файлы), не логируем и не передаём генерируемые пользователями пароли. Всё, что вы делаете через наш генератор, работает в вашем браузере локально.</p>
+      <h2>How to use?</h2>
+      <p>This is a maximally simple and minimalist password generator, written in HTML, CSS, and JavaScript, running locally. Enter and select the required parameters, click "Generate" — and get a secure password.</p>
+      <p>PassQuick password generator is an open source project. You can view its full code on <a href="https://github.com/" target="_blank" style="color:#e8750c;">GitHub</a>.</p>
+      <p>We don't use cookies, don't log and don't transmit user-generated passwords. Everything you do through our generator works locally in your browser.</p>
     </div>
   </div>
 
@@ -264,25 +264,25 @@
 
     const clearTerminal = () => {
       terminal.innerHTML = "";
-      print("Добро пожаловать в генератор паролей PassQuick!");
-      print("Введите длину, выберите параметры и нажмите кнопку «Сгенерировать пароль».");
+      print("Welcome to PassQuick password generator!");
+      print("Enter length, select options and click 'Generate password' button.");
     };
 
     const copyToClipboard = (text) => {
       navigator.clipboard.writeText(text).then(() => {
-        print("> 📋 Пароль скопирован в буфер обмена.");
+        print("> 📋 Password copied to clipboard.");
       });
     };
 
     const copyLastPassword = () => {
       if (lastPassword) copyToClipboard(lastPassword);
-      else print("> ❗ Пароль ещё не сгенерирован.");
+      else print("> ❗ Password not generated yet.");
     };
 
     const randomLength = () => {
       const random = Math.floor(Math.random() * (24 - 8 + 1)) + 8;
       document.getElementById("length").value = random;
-      print("> 🎲 Случайная длина выбрана: " + random);
+      print("> 🎲 Random length selected: " + random);
     };
 
     const generatePassword = () => {
@@ -293,7 +293,7 @@
       const useSymbols = document.getElementById("include-symbols").checked;
 
       if (isNaN(length) || length < 4 || length > 128) {
-        print("> ❌ Неверная длина. Введите число от 4 до 128.");
+        print("> ❌ Invalid length. Enter a number from 4 to 128.");
         return;
       }
 
@@ -304,7 +304,7 @@
       if (useSymbols) charset += "!@#$%^&*()-_+=<>?";
 
       if (!charset) {
-        print("> ❌ Выберите хотя бы один тип символов.");
+        print("> ❌ Select at least one character type.");
         return;
       }
 
@@ -316,7 +316,7 @@
       }
 
       lastPassword = password;
-      print("> Сгенерированный пароль:");
+      print("> Generated password:");
       print(password);
     };
 
@@ -325,9 +325,9 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('service-worker.js').then(() => {
-          console.log("✅ Service Worker зарегистрирован");
+          console.log("✅ Service Worker registered");
         }).catch(err => {
-          console.warn("Service Worker не зарегистрирован:", err);
+          console.warn("Service Worker not registered:", err);
         });
       });
     }
@@ -350,8 +350,8 @@
       }
     });
 
-    print("Добро пожаловать в генератор паролей PassQuick!");
-    print("Введите длину, выберите параметры и нажмите кнопку «Сгенерировать пароль».");
+    print("Welcome to PassQuick password generator!");
+    print("Enter length, select options and click 'Generate password' button.");
   </script>
 </body>
 </html>

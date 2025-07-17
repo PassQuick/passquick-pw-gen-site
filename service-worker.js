@@ -2,6 +2,7 @@ const cacheName = 'terminal-pwgen-v1';
 const filesToCache = [
   '/',
   '/index.html',
+  '/index_en.html',
 ];
 
 self.addEventListener('install', (e) => {

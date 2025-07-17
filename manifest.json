@@ -1,5 +1,5 @@
 {
-  "name": "Генератор паролей PassQuick",
+  "name": "PassQuick password generator",
   "short_name": "PassQuick",
   "start_url": "./",
   "display": "standalone",
