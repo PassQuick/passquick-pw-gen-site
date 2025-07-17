@@ -15,6 +15,12 @@
       "src": "passquick-icon_512-v2.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+    "src": "passquick-adaptive-icon_512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "maskable"
     }
   ]
 }
