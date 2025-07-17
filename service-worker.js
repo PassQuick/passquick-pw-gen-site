@@ -11,11 +11,13 @@ self.addEventListener('install', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  if (e.request.url.endsWith('manifest.json')) {
-    return;
-  }
+  const url = new URL(e.request.url);
 
-  e.respondWith(
-    caches.match(e.request).then((response) => response || fetch(e.request))
-  );
+  if (url.pathname.endsWith('manifest.json')) {
+    e.respondWith(fetch(e.request));
+  } else {
+    e.respondWith(
+      caches.match(e.request).then((response) => response || fetch(e.request))
+    );
+  }
 });
