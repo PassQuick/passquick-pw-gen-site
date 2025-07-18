@@ -1,6 +1,7 @@
 {
   "name": "PassQuick password generator",
   "short_name": "PassQuick",
+  "description": "A local secure password generator on your device.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",
