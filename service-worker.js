@@ -8,7 +8,7 @@ const filesToCache = [
   '/passquick-icon_192-v2.png',
   '/passquick-icon_512-v2.png',
   '/passquick-maskable-icon_512.png',
-  '/passquick-adaptive-icon_512.svg',
+  '/passquick-adaptive-icon_512-v2.svg',
   '/manifest.json',
 ];
 
