@@ -4,8 +4,8 @@
   "description": "A local secure password generator on your device.",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#e8750c",
+  "theme_color": "#e8750c",
   "icons": [
     {
       "src": "passquick-icon_192-v3.png",
