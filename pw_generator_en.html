@@ -322,16 +322,6 @@
 
     const toggleTheme = () => document.body.classList.toggle("light");
 
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js').then(() => {
-          console.log("✅ Service Worker registered");
-        }).catch(err => {
-          console.warn("Service Worker not registered:", err);
-        });
-      });
-    }
-
     document.getElementById('helpBtn').addEventListener('click', () => {
       const modal = document.getElementById('helpModal');
       modal.classList.add('show');
@@ -353,5 +343,7 @@
     print("Welcome to PassQuick password generator!");
     print("Enter length, select options and click 'Generate password' button.");
   </script>
+
+  <script src="sw-register.js"></script>
 </body>
 </html>

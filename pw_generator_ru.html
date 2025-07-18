@@ -322,16 +322,6 @@
 
     const toggleTheme = () => document.body.classList.toggle("light");
 
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js').then(() => {
-          console.log("✅ Service Worker зарегистрирован");
-        }).catch(err => {
-          console.warn("Service Worker не зарегистрирован:", err);
-        });
-      });
-    }
-
     document.getElementById('helpBtn').addEventListener('click', () => {
       const modal = document.getElementById('helpModal');
       modal.classList.add('show');
@@ -353,5 +343,7 @@
     print("Добро пожаловать в генератор паролей PassQuick!");
     print("Введите длину, выберите параметры и нажмите кнопку «Сгенерировать пароль».");
   </script>
+  
+  <script src="sw-register.js"></script>
 </body>
 </html>

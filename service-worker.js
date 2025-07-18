@@ -4,6 +4,12 @@ const filesToCache = [
   '/index.html',
   '/pw_generator_ru.html',
   '/pw_generator_en.html',
+  '/sw-register.js',
+  '/passquick-icon_192-v2.png',
+  '/passquick-icon_512-v2.png',
+  '/passquick-maskable-icon_512.png',
+  '/passquick-adaptive-icon_512.svg',
+  '/manifest.json',
 ];
 
 self.addEventListener('install', (e) => {
