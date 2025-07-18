@@ -7,13 +7,13 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "passquick-icon_192-v2.png",
+      "src": "passquick-icon_192-v3.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "passquick-icon_512-v2.png",
+      "src": "passquick-icon_512-v3.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
