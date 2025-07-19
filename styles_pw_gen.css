@@ -1,0 +1,231 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #000;
+    --text-color: #e8750c;
+    --border-color: #e8750c;
+    --btn-bg: #000;
+    --highlight-color: #e8750c;
+}
+
+body.light {
+    --bg-color: #f9f9f9;
+    --text-color: #e8750c;
+    --border-color: #e8750c;
+    --btn-bg: #fff;
+    --highlight-color: #e8750c;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: monospace;
+    padding: 20px;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--highlight-color);
+}
+
+#langToggle {
+    background: var(--btn-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#langToggle:hover {
+    background-color: rgba(232, 117, 12, 0.1);
+    transform: scale(1.05);
+}
+
+#terminal {
+    white-space: pre-wrap;
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.4s ease-in;
+    box-sizing: border-box;
+}
+
+input[type="number"], button {
+    background: var(--btn-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    outline: none;
+    font-family: monospace;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(232, 117, 12, 0.5);
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--btn-bg);
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: background 0.3s;
+    flex: 1 1 calc(50% - 10px);
+    box-sizing: border-box;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    accent-color: var(--highlight-color);
+    width: 16px;
+    height: 16px;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.button-row button {
+    flex: 1 1 calc(50% - 10px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeModal {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#helpModal.show .modal-content {
+    animation: fadeModal 0.3s ease-out;
+}
+
+@media (max-width: 500px) {
+    .checkbox-wrapper {
+        flex: 1 1 100%;
+    }
+    .button-row button {
+        flex: 1 1 100%;
+    }
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+}
+
+a {
+    color: var(--highlight-color);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(--highlight-color);
+}
+
+#helpModal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#helpModal .modal-content {
+    background-color: #1a1a1a;
+    color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    text-align: left;
+}
+
+#helpModal .close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#helpBtn {
+    background: none;
+    color: #e8750c;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 4px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 13px;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+    width: auto;
+    display: inline-block;
+}
+
+#helpBtn:hover {
+    background-color: rgba(232, 117, 12, 0.1);
+}

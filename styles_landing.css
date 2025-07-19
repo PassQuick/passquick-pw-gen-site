@@ -1,0 +1,431 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a2a2a 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Animated background particles */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #e8750c;
+    border-radius: 50%;
+    animation: float 8s infinite ease-in-out;
+    opacity: 0.6;
+    will-change: transform, opacity;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+    50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+}
+
+.container {
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    border: 1px solid #e8750c;
+    box-shadow: 0 20px 40px rgba(232, 117, 12, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    position: relative;
+    animation: slideIn 1s ease-out;
+    margin: 20px;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.logo {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #e8750c;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(232, 117, 12, 0.5);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.description {
+    font-size: 1rem;
+    color: #999;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.language-selector {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.language-card {
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #333;
+    border-radius: 15px;
+    padding: 30px 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+    flex: 1;
+    max-width: 250px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.language-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(232, 117, 12, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.language-card:hover::before {
+    left: 100%;
+}
+
+.language-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: #e8750c;
+    box-shadow: 0 15px 30px rgba(232, 117, 12, 0.3);
+}
+
+.language-flag {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.language-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #e8750c;
+}
+
+.language-desc {
+    font-size: 0.9rem;
+    color: #bbb;
+    opacity: 0.8;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.feature {
+    background: rgba(232, 117, 12, 0.1);
+    border: 1px solid rgba(232, 117, 12, 0.3);
+    border-radius: 10px;
+    padding: 20px 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    background: rgba(232, 117, 12, 0.2);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.feature-text {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.footer {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+    font-size: 0.8rem;
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.language-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #e8750c;
+    border-radius: 25px;
+    padding: 12px 18px;
+    cursor: pointer;
+    color: #e8750c;
+    font-size: 1rem;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    z-index: 10;
+    user-select: none;
+    touch-action: manipulation;
+    min-width: 50px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.language-toggle:hover {
+    background: rgba(232, 117, 12, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(232, 117, 12, 0.4);
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 30px 20px;
+        margin: 10px;
+        width: calc(100% - 20px);
+        max-width: none;
+    }
+
+    .logo {
+        font-size: 2.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .description {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+
+    .language-selector {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .language-card {
+        min-width: auto;
+        width: 100%;
+        max-width: 280px;
+        padding: 25px 20px;
+    }
+
+    .language-flag {
+        font-size: 2.5rem;
+    }
+
+    .language-name {
+        font-size: 1.3rem;
+    }
+
+    .language-desc {
+        font-size: 0.85rem;
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .feature {
+        padding: 15px 10px;
+    }
+
+    .feature-icon {
+        font-size: 1.5rem;
+    }
+
+    .feature-text {
+        font-size: 0.8rem;
+    }
+
+    .footer {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 30px;
+        font-size: 0.75rem;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .language-toggle {
+        top: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    /* Оптимизация анимаций для мобильных устройств */
+    .particle {
+        animation-duration: 12s;
+    }
+
+    .logo {
+        animation-duration: 3s;
+    }
+
+    .language-flag {
+        animation-duration: 4s;
+    }
+
+    /* Отключение некоторых анимаций на слабых устройствах */
+    @media (max-width: 480px) {
+        .particle {
+            animation: none;
+            opacity: 0.3;
+        }
+        
+        .language-flag {
+            animation: none;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+    }
+
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .language-card {
+        padding: 20px 15px;
+    }
+
+    .language-flag {
+        font-size: 2rem;
+    }
+
+    .language-name {
+        font-size: 1.2rem;
+    }
+
+    .language-desc {
+        font-size: 0.8rem;
+    }
+}
+
+/* Улучшенная поддержка touch-устройств */
+@media (hover: none) and (pointer: coarse) {
+    .language-card:hover {
+        transform: none;
+        border-color: #333;
+        box-shadow: none;
+    }
+    
+    .language-card:active {
+        transform: translateY(-2px) scale(0.98);
+        border-color: #e8750c;
+        box-shadow: 0 5px 15px rgba(232, 117, 12, 0.3);
+    }
+
+    .feature:hover {
+        transform: none;
+        background: rgba(232, 117, 12, 0.1);
+    }
+    
+    .language-toggle:hover {
+        transform: none;
+        background: rgba(0, 0, 0, 0.9);
+        box-shadow: none;
+    }
+
+    .language-toggle:active {
+        transform: scale(0.95);
+        background: rgba(232, 117, 12, 0.2);
+    }
+}
+
+/* Дополнительные оптимизации для производительности */
+.language-card,
+.feature,
+.language-toggle {
+    will-change: transform;
+}
+
+/* Уменьшение количества частиц на мобильных */
+@media (max-width: 768px) {
+    .particles {
+        opacity: 0.7;
+    }
+}
