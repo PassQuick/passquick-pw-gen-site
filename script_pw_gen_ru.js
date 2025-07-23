@@ -31,7 +31,7 @@ const copyLastPassword = () => {
 };
 
 const randomLength = () => {
-    const random = Math.floor(Math.random() * (24 - 8 + 1)) + 8;
+    const random = Math.floor(Math.random() * (128 - 4 + 1)) + 4;
     document.getElementById("length").value = random;
     print("> 🎲 Случайная длина выбрана: " + random);
 };
