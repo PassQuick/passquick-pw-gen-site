@@ -113,7 +113,7 @@ function goToRussian() {
     document.body.style.opacity = '0.8';
     setTimeout(() => {
         // Replace with your Russian version URL
-        window.location.href = 'pw_generator_ru?v=2';
+        window.location.href = 'pw_generator_ru?v=4';
     }, 300);
 }
 
@@ -122,7 +122,7 @@ function goToEnglish() {
     document.body.style.opacity = '0.8';
     setTimeout(() => {
         // Replace with your English version URL
-        window.location.href = 'pw_generator_en?v=2';
+        window.location.href = 'pw_generator_en?v=4';
     }, 300);
 }
 
