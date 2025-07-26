@@ -8,7 +8,7 @@
 
 ---
 
-### 🔍 About project
+### ℹ️ About project
 **PassQuick** is a simple and fast password generator running directly in your browser. It supports both Russian and English interfaces, works offline, and requires no installation. All passwords are generated locally without sending any data to servers.
 
 ✅ **Features:**
