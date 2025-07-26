@@ -41,12 +41,12 @@
 ---
 
 ### 🌐 Онлайн-версия
-👉 <a href="https://passquick.memecorp.ru/" target="_blank">https://passquick.memecorp.ru/</a>
+👉 [https://passquick.memecorp.ru/](https://passquick.memecorp.ru/)
 
 ---
 
 ### 🔎 Как использовать?
-1. Откройте <a href="https://passquick.memecorp.ru/" target="_blank">сайт</a>
+1. Откройте [сайт](https://passquick.memecorp.ru/)
 2. Выберите язык интерфейса (RU/EN)
 3. Укажите длину пароля и нужные параметры
 4. Нажмите «Сгенерировать пароль»
@@ -54,11 +54,11 @@
 ---
 
 ### 📲 Установка как приложение
-PassQuick поддерживает установку как PWA (Progressive Web App) в браузерах Chrome, Edge, Яндекс Браузере и других на Windows, Linux, Android, macOS, iOS и iPadOS.
+PassQuick поддерживает установку как PWA (Progressive Web App) в браузерах Chrome, Edge, Яндекс Браузере, Safari и других на Windows, Linux, Android, macOS, iOS и iPadOS.
 
 Как установить:
-1. Откройте <a href="https://passquick.memecorp.ru/" target="_blank">сайт PassQuick</a> в вашем браузере.
-2. Воспользуйтесь инструкцией по установке веб-приложений для вашего браузера: <a href="https://browser.yandex.ru/help/ru/personalization/web-app.html" target="_blank">Яндекс Браузер</a>, <a href="https://support.google.com/chrome/answer/9658361" target="_blank">Google Chrome</a>, <a href="https://learn.microsoft.com/ru-ru/microsoft-edge/progressive-web-apps/ux" target="_blank">Microsoft Edge</a>, <a href="https://support.apple.com/ru-ru/104996" target="_blank">Safari (macOS)</a>, <a href="https://support.apple.com/ru-ru/guide/iphone/iph42ab2f3a7/ios" target="_blank">Safari (iOS)</a>, <a href="https://support.apple.com/ru-ru/guide/ipad/ipadc602b75b/ipados" target="_blank">Safari (IPadOS)</a>.
+1. Откройте [сайт PassQuick](https://passquick.memecorp.ru/) в вашем браузере.
+2. Воспользуйтесь инструкцией по установке веб-приложений для вашего браузера: [Яндекс Браузер](https://browser.yandex.ru/help/ru/personalization/web-app.html), [Google Chrome](https://support.google.com/chrome/answer/9658361), [Microsoft Edge](https://learn.microsoft.com/ru-ru/microsoft-edge/progressive-web-apps/ux), [Safari (macOS)](https://support.apple.com/ru-ru/104996), [Safari (iOS)](https://support.apple.com/ru-ru/guide/iphone/iph42ab2f3a7/ios), [Safari (IPadOS)](https://support.apple.com/ru-ru/guide/ipad/ipadc602b75b/ipados).
 4. Готово! PassQuick работает как отдельное приложение и может быть запущено офлайн, без доступа к интернету.
 
 ---
@@ -73,7 +73,7 @@ PassQuick поддерживает установку как PWA (Progressive We
 
 ### 📄 Лицензия
 Проект распространяется под лицензией **MIT**.  
-<a href="https://github.com/PassQuick/passquick-pw-gen-site/blob/main/LICENSE" target="_blank">Подробнее</a>
+[Подробнее](https://github.com/PassQuick/passquick-pw-gen-site/blob/main/LICENSE)
 
 ---
 
