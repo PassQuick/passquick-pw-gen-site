@@ -73,7 +73,7 @@ How to install:
 
 ### 📄 License
 This project is licensed under the **MIT License**.  
-[Learn more](LICENSE)
+<a href="https://github.com/PassQuick/passquick-pw-gen-site/blob/main/LICENSE" target="_blank">Learn more</a>
 
 ---
 
