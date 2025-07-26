@@ -6,6 +6,8 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen?style=for-the-badge)
 
+[🇺🇸 Open the English version of the README](https://github.com/PassQuick/passquick-pw-gen-site/blob/main/README.md)
+
 ---
 
 ### ℹ️ О проекте
