@@ -54,7 +54,7 @@
 ---
 
 ### 📲 Installation as an application
-PassQuick supports installation as a PWA (Progressive Web App) in Chrome, Edge, Yandex Browser and others on Windows, Linux, Android, macOS, iOS and iPadOS.
+PassQuick supports installation as a PWA (Progressive Web App) in Chrome, Edge, Yandex Browser, Safari and others on Windows, Linux, Android, macOS, iOS and iPadOS.
 
 How to install:
 1. Open the [PassQuick website](https://passquick.memecorp.ru/) in your browser.
