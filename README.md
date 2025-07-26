@@ -12,14 +12,14 @@
 **PassQuick** is a simple and fast password generator running directly in your browser. It supports both Russian and English interfaces, works offline, and requires no installation. All passwords are generated locally without sending any data to servers.
 
 ✅ **Features:**
-- 🔒 Cryptographically secure
+- 🛡️ Cryptographically secure
 - ⚡ Instant generation
-- 🎨 Minimalistic design
+- 🎯 Minimalistic design
 - 🌍 RU & EN support
 - 🖤 Dark mode
-- 🛠 Full customization (length, character types)
-- 📡 Works offline (PWA)
-- 💻 Open-source
+- ✨ Full customization (length, character types)
+- 🌐 Works offline (PWA)
+- 🔓 Open-source
 
 ---
 
@@ -28,10 +28,10 @@
 <details>
   <summary>Click to open</summary>
   
-  ![Home Page](gh-assets/screenshot1-en.png)
-  ![Password Generator](gh-assets/screenshot2-en.png)
-  ![Password Generator](gh-assets/screenshot3-en.png)
-  ![Password Generator](gh-assets/screenshot4-en.png)
+  ![Home page](gh-assets/screenshot1-en.png)
+  ![Password generator](gh-assets/screenshot2-en.png)
+  ![Password generator](gh-assets/screenshot3-en.png)
+  ![Password generator](gh-assets/screenshot4-en.png)
   ![About](gh-assets/screenshot5-en.png)
 
 </details>
