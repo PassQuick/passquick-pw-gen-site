@@ -41,12 +41,12 @@
 ---
 
 ### 🌐 Online version
-👉 <a href="https://passquick.memecorp.ru/" target="_blank">https://passquick.memecorp.ru/</a>
+👉 [https://passquick.memecorp.ru/](https://passquick.memecorp.ru/)
 
 ---
 
 ### 🔎 How to use?
-1. Open <a href="https://passquick.memecorp.ru/" target="_blank">site</a>
+1. Open [https://passquick.memecorp.ru/](site)
 2. Choose language (RU/EN)
 3. Set password length and options
 4. Click **"Generate password"**
@@ -57,8 +57,8 @@
 PassQuick supports installation as a PWA (Progressive Web App) in Chrome, Edge, Yandex Browser and others on Windows, Linux, Android, macOS, iOS and iPadOS.
 
 How to install:
-1. Open the <a href="https://passquick.memecorp.ru/" target="_blank">PassQuick website</a> in your browser.
-2. Follow the instructions for installing web applications for your browser: <a href="https://support.google.com/chrome/answer/9658361" target="_blank">Google Chrome</a>, <a href="https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/ux" target="_blank">Microsoft Edge</a>, <a href="https://support.apple.com/en-us/104996" target="_blank">Safari (macOS)</a>, <a href="https://support.apple.com/en-ca/guide/iphone/iph42ab2f3a7/ios" target="_blank">Safari (iOS)</a>, <a href="https://support.apple.com/en-ca/guide/ipad/ipadc602b75b/ipados" target="_blank">Safari (IPadOS)</a>, <a href="https://browser.yandex.ru/help/en/personalization/web-app.html" target="_blank">Yandex Browser</a>.
+1. Open the [https://passquick.memecorp.ru/](PassQuick website) in your browser.
+2. Follow the instructions for installing web applications for your browser: [https://support.google.com/chrome/answer/9658361](Google Chrome), [https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/ux](Microsoft Edge), [https://support.apple.com/en-us/104996](Safari (macOS)), [https://support.apple.com/en-ca/guide/iphone/iph42ab2f3a7/ios](Safari (iOS)), [https://support.apple.com/en-ca/guide/ipad/ipadc602b75b/ipados](Safari (IPadOS)), [https://browser.yandex.ru/help/en/personalization/web-app.html](Yandex Browser).
 4. Ready! PassQuick works as a standalone application and can be run offline without internet access.
 
 ---
@@ -73,7 +73,7 @@ How to install:
 
 ### 📄 License
 This project is licensed under the **MIT License**.  
-<a href="https://github.com/PassQuick/passquick-pw-gen-site/blob/main/LICENSE" target="_blank">Learn more</a>
+[https://github.com/PassQuick/passquick-pw-gen-site/blob/main/LICENSE](Learn more)
 
 ---
 
