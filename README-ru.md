@@ -41,7 +41,7 @@
 ---
 
 ### 🌐 Онлайн-версия
-👉 [https://passquick.memecorp.ru/](https://passquick.memecorp.ru/)
+👉 <a href="https://passquick.memecorp.ru/" target="_blank">https://passquick.memecorp.ru/</a>
 
 ---
 
@@ -58,7 +58,7 @@ PassQuick поддерживает установку как PWA (Progressive We
 
 Как установить:
 1. Откройте <a href="https://passquick.memecorp.ru/" target="_blank">сайт PassQuick</a> в вашем браузере.
-2. Воспользуйтесь инструкцией по установке веб-приложений для вашего браузера: [Яндекс Браузер](https://browser.yandex.ru/help/ru/personalization/web-app.html), [Google Chrome](https://support.google.com/chrome/answer/9658361), [Microsoft Edge](https://learn.microsoft.com/ru-ru/microsoft-edge/progressive-web-apps/ux).
+2. Воспользуйтесь инструкцией по установке веб-приложений для вашего браузера: <a href="https://browser.yandex.ru/help/ru/personalization/web-app.html" target="_blank">Яндекс Браузер</a>, <a href="https://support.google.com/chrome/answer/9658361" target="_blank">Google Chrome</a>, <a href="https://learn.microsoft.com/ru-ru/microsoft-edge/progressive-web-apps/ux" target="_blank">Microsoft Edge</a>.
 4. Готово! PassQuick работает как отдельное приложение и может быть запущено офлайн, без доступа к интернету.
 
 ---
@@ -73,7 +73,7 @@ PassQuick поддерживает установку как PWA (Progressive We
 
 ### 📄 Лицензия
 Проект распространяется под лицензией **MIT**.  
-[Подробнее](LICENSE)
+<a href="https://github.com/PassQuick/passquick-pw-gen-site/blob/main/LICENSE" target="_blank">Подробнее</a>
 
 ---
 
