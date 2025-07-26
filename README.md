@@ -41,7 +41,15 @@
 ---
 
 ### 🌐 Online version
-👉 [https://passquick.memecorp.ru/](https://passquick.memecorp.ru/)
+👉 <a href="https://passquick.memecorp.ru/" target="_blank">https://passquick.memecorp.ru/</a>
+
+---
+
+### 🔎 How to use?
+1. Open <a href="https://passquick.memecorp.ru/" target="_blank">site</a>
+2. Choose language (RU/EN)
+3. Set password length and options
+4. Click **"Generate password"**
 
 ---
 
@@ -49,8 +57,8 @@
 PassQuick supports installation as a PWA (Progressive Web App) in Chrome, Edge, Yandex Browser and others on Windows, Linux, Android, macOS, iOS and iPadOS.
 
 How to install:
-1. Open the [PassQuick website](https://passquick.memecorp.ru/) in your browser.
-2. Follow the instructions for installing web applications for your browser: [Google Chrome](https://support.google.com/chrome/answer/9658361), [Microsoft Edge](https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/ux), [Yandex Browser](https://browser.yandex.ru/help/en/personalization/web-app.html).
+1. Open the <a href="https://passquick.memecorp.ru/" target="_blank">PassQuick website</a> in your browser.
+2. Follow the instructions for installing web applications for your browser: <a href="https://support.google.com/chrome/answer/9658361" target="_blank">Google Chrome</a>, <a href="https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/ux" target="_blank">Microsoft Edge</a>, <a href="https://browser.yandex.ru/help/en/personalization/web-app.html" target="_blank">Yandex Browser</a>.
 4. Ready! PassQuick works as a standalone application and can be run offline without internet access.
 
 ---
@@ -60,14 +68,6 @@ How to install:
 - **CSS3**
 - **JavaScript**
 - **PWA (offline support)**
-
----
-
-### 🔎 How to use?
-1. Open [site](https://passquick.memecorp.ru/)
-2. Choose language (RU/EN)
-3. Set password length and options
-4. Click **"Generate password"**
 
 ---
 
