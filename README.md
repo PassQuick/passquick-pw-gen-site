@@ -58,7 +58,7 @@ PassQuick supports installation as a PWA (Progressive Web App) in Chrome, Edge, 
 
 How to install:
 1. Open the [PassQuick website](https://passquick.memecorp.ru/) in your browser.
-2. Follow the instructions for installing web applications for your browser: [Google Chrome](https://support.google.com/chrome/answer/9658361), [Microsoft Edge](https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/ux), [Safari (macOS)](https://support.apple.com/en-us/104996), [Safari (iOS)](https://support.apple.com/en-ca/guide/iphone/iph42ab2f3a7/ios), [Safari (IPadOS)](https://support.apple.com/en-ca/guide/ipad/ipadc602b75b/ipados), [Yandex Browser](https://browser.yandex.ru/help/en/personalization/web-app.html).
+2. Follow the instructions for installing web applications for your browser: [Google Chrome](https://support.google.com/chrome/answer/9658361), [Microsoft Edge](https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/ux), [Safari (macOS)](https://support.apple.com/en-us/104996), [Safari (iOS)](https://support.apple.com/en-ca/guide/iphone/iph42ab2f3a7/ios), [Safari (iPadOS)](https://support.apple.com/en-ca/guide/ipad/ipadc602b75b/ipados), [Yandex Browser](https://browser.yandex.ru/help/en/personalization/web-app.html).
 4. Ready! PassQuick works as a standalone application and can be run offline without internet access.
 
 ---
