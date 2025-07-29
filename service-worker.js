@@ -1,4 +1,4 @@
-const cacheName = 'passquick-pwgen-v2';
+const cacheName = 'passquick-pwgen-v3';
 const filesToCache = [
   '/',
   '/index.html',
