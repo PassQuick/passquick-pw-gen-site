@@ -77,3 +77,34 @@ footer {
   font-size: 14px;
   color: #777;
 }
+
+/* Для Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #e8750c transparent; /* бегунок | фон */
+}
+
+/* Для Chrome, Edge, Opera и других WebKit-браузеров */
+::-webkit-scrollbar {
+  width: 10px; /* тонкий скроллбар */
+  height: 10px; /* для горизонтального */
+}
+
+/* Прозрачный фон трека */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Бегунок */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e8750c, #f08a2e);
+  border-radius: 10px;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.15);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover-эффект */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d06408, #e8750c);
+  transform: scaleX(1.2);
+}
